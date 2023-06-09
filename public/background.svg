@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 200 200" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="sunrise-gradient" x1="0" y1="0" x2="0" y2="100%">
+      <stop offset="0%" stop-color="#2b1c77"></stop>
+      <stop offset="55%" stop-color="#9c69f2"></stop>
+      <stop offset="75%" stop-color="#f892db"></stop>
+      <stop offset="100%" stop-color="#ffd7d8"></stop>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="100" fill="url(#sunrise-gradient)"></circle>
+</svg>
