@@ -26,7 +26,7 @@ npm run dev
 
 ## To Do
 
-* [ ] stream response
+* [x] stream response
 * [ ] Markdown and LaTeX rendering
 * [ ] edit messages
 * [ ] regenerate response
@@ -51,7 +51,7 @@ npm run dev
   * [ ] auto name chats
   * [ ] start new chat
 * [ ] display API cost
-* [ ] tray window
+* [ ] system tray
   * [ ] tray icon
   * [ ] smaller version of main window above task bar
   * [ ] keyboard shortcut for small window
