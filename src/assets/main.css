@@ -6,7 +6,17 @@ body {
 	background-color: #333;
 	color: #eee;
 	font-family: sans-serif;
-	font-size: 16px;
+	font-size: 15px;
+}
+
+.md-editor-preview {
+	color: #eee !important;
+	font-size: inherit !important;
+	word-break: inherit !important;
+}
+
+.md-editor {
+	font-size: inherit !important;
 }
 
 ::-webkit-scrollbar {
@@ -14,7 +24,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-	background-color: inherit;
+	background: none;
 }
 
 ::-webkit-scrollbar-thumb {
