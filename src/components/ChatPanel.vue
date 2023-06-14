@@ -30,11 +30,12 @@
 					<button class="icon-button" :class="{'input-type-active': inputType }" @click="() => setInputType(true)"><font-awesome-icon icon="fa-brands fa-markdown" class="input-type-icon" /></button>
 				</div>
 				<MdEditor v-if="inputType" ref="mdInput" v-model="inputText" class="md-input" :placeholder="'Enter message ...'" :theme="'dark'" :language="'en-US'" :preview="false" :toolbars="[]" :tab-width="4" :footers="[]" :no-upload-img="true" />
-				<textarea v-else ref="input" class="input" rows="1" v-model="inputText" placeholder="Enter message ..." @input="resizeInput" @keypress.enter="handleInputEnter" @keydown.tab="handleInputTab"></textarea>
+				<textarea v-else ref="input" class="input" rows="1" v-model="inputText" placeholder="Enter message ..." @input="resizeInput" @keypress.enter="handleInputEnter" @keydown.tab="handleInputTab" autofocus></textarea>
 				<button id="send-message" class="icon-button" :disabled="sendDisabled" @click="sendMessage"><font-awesome-icon icon="fa-solid fa-paper-plane" class="send-icon" /></button>
 			</div>
 		</div>
 	</div>
+	<button id="clear-messages" class="icon-button" @click="clearMessages"><font-awesome-icon icon="fa-solid fa-trash-can" /></button>
 </template>
 
 <script setup>
@@ -73,7 +74,7 @@
 	watch(inputType, () => {
 		nextTick(() => {
 			if (inputType.value) {
-				mdInput.value.focus();
+				mdInput.value.focus("end");
 			} else {
 				input.value.focus();
 			}
@@ -164,7 +165,7 @@
 	}
 
 	function handleInputEnter(event) {
-		if (event.shiftKey || event.ctrlKey)
+		if (event.shift || event.ctrlKey)
 			return;
 
 		event.preventDefault();
@@ -210,6 +211,10 @@
 	function regenerate(index) {
 		messages.splice(index);
 		generateResponse();
+	}
+
+	function clearMessages() {
+		messages.splice(1);
 	}
 
 	class FatalError extends Error {}
@@ -429,5 +434,12 @@
 		max-height: 200px;
 		flex: 1;
 		margin-right: 15px;
+	}
+
+	#clear-messages {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: #d00;
 	}
 </style>

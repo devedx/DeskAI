@@ -6,10 +6,10 @@ import App from "./App.vue";
 //font awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faPaperPlane, faFileLines, faPenToSquare, faRotate } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane, faFileLines, faPenToSquare, faRotate, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faMarkdown } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faPaperPlane, faFileLines, faMarkdown, faPenToSquare, faRotate);
+library.add(faPaperPlane, faFileLines, faMarkdown, faPenToSquare, faRotate, faTrashCan);
 
 createApp(App)
 	.component("font-awesome-icon", FontAwesomeIcon)

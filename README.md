@@ -27,10 +27,10 @@ npm run dev
 ## To Do
 
 * [x] stream response
-* [ ] Markdown and LaTeX rendering
-* [ ] edit messages
-* [ ] regenerate response
-* [ ] open app keyboard shortcut
+* [x] Markdown and LaTeX rendering
+* [x] edit messages
+* [x] regenerate response
+* [x] open app keyboard shortcut
 * [ ] chat settings
   * [ ] choose model
   * [ ] set temperature
@@ -52,7 +52,7 @@ npm run dev
   * [ ] start new chat
 * [ ] display API cost
 * [ ] system tray
-  * [ ] tray icon
+  * [x] tray icon
   * [ ] smaller version of main window above task bar
   * [ ] keyboard shortcut for small window
 * [ ] completions api
