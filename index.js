@@ -11,6 +11,7 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1100,
 		height: 700,
+		title: "DeskAI",
 		icon: path.join(__dirname, "public/icon.png"),
 		webPreferences: {
 			nodeIntegration: true,

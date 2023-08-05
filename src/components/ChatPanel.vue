@@ -63,6 +63,7 @@
 	const hoveringMessage = ref(null);
 	const editingMessage = ref(null);
 	let editingMessageOriginal = null;
+	let gptRequestAbort = null;
 
 	onMounted(() => {
 		scrollToBottom(true);
@@ -77,6 +78,7 @@
 				mdInput.value.focus("end");
 			} else {
 				input.value.focus();
+				resizeInput();
 			}
 			scrollToBottom();
 		});
@@ -120,6 +122,7 @@
 		// get assistant response
 		const url = "https://api.openai.com/v1/chat/completions";
 
+		gptRequestAbort = new AbortController();
 		fetchEventSource(url, {
 			method: "POST",
 			headers: {
@@ -131,6 +134,7 @@
 				messages: gptMessages.value,
 				stream: true
 			}),
+			signal: gptRequestAbort.signal,
 			onopen(response) {
 				if (response.ok && response.headers.get('content-type') === EventStreamContentType) {
 					messages.push({ id: uuid(), role: "assistant", content: " \u2588" });
@@ -154,6 +158,7 @@
 			},
 			onclose() {
 				sending.value = false;
+				gptRequestAbort = null;
 			},
 			onerror(error) {
 				console.log(error);
@@ -165,7 +170,7 @@
 	}
 
 	function handleInputEnter(event) {
-		if (event.shift || event.ctrlKey)
+		if (event.shiftKey || event.ctrlKey)
 			return;
 
 		event.preventDefault();
@@ -214,6 +219,10 @@
 	}
 
 	function clearMessages() {
+		if (gptRequestAbort !== null)
+			gptRequestAbort.abort();
+			sending.value = false;
+
 		messages.splice(1);
 	}
 
