@@ -15,6 +15,7 @@ npm install
 ### Prod Version
 
 ```bash
+npm run build
 npm start
 ```
 
