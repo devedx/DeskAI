@@ -75,4 +75,7 @@ function registerShortcuts() {
 app.whenReady().then(() => {
 	createWindow();
 	registerShortcuts();
+
+	if (app.commandLine.hasSwitch("minimized"))
+		mainWindow.hide();
 });
