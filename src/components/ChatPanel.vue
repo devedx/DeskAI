@@ -136,7 +136,10 @@
 			}),
 			signal: gptRequestAbort.signal,
 			onopen(response) {
-				if (response.ok && response.headers.get('content-type') === EventStreamContentType) {
+				console.log(response);
+				console.log(response.headers.get("content-type"));
+				console.log(EventStreamContentType);
+				if (response.ok && response.headers.get("content-type").startsWith(EventStreamContentType)) {
 					messages.push({ id: uuid(), role: "assistant", content: " \u2588" });
 					return;
 				} else if (response.status >= 400 && response.status < 500 && response.status !== 429) {
