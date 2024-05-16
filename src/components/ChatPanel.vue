@@ -136,9 +136,6 @@
 			}),
 			signal: gptRequestAbort.signal,
 			onopen(response) {
-				console.log(response);
-				console.log(response.headers.get("content-type"));
-				console.log(EventStreamContentType);
 				if (response.ok && response.headers.get("content-type").startsWith(EventStreamContentType)) {
 					messages.push({ id: uuid(), role: "assistant", content: " \u2588" });
 					return;
@@ -164,8 +161,6 @@
 				gptRequestAbort = null;
 			},
 			onerror(error) {
-				console.log(error);
-
 				if (error instanceof FatalError)
 					throw error;
 			}
